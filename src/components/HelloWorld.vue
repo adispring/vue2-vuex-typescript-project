@@ -1,5 +1,6 @@
 <template>
-  <div class="hello">
+  <div class="hello" @click="increment">
+    {{ count }}
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
@@ -124,6 +125,14 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
+
+  get count() {
+    return this.$store.state.count;
+  }
+
+  increment() {
+    this.$store.commit("increment");
+  }
 }
 </script>
 
